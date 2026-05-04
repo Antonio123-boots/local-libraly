@@ -1,16 +1,44 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #[em LocalLibrary], a very basic Express website developed as a tutorial example on the Mozilla Developer Network.
+  .card
+    h1= title
+    p Welcome to #[em LocalLibrary], a very basic Express website developed as a tutorial example on the Mozilla Developer Network.
 
-  h1 Dynamic content
+    h2 Dynamic content
 
-  p The library has the following record counts:
+    .counts
+      .count-item
+        strong= book_count
+        span.text-muted Books
+      .count-item
+        strong= book_instance_count
+        span.text-muted Copies
+      .count-item
+        strong= book_instance_available_count
+        span.text-muted Copies available
+      .count-item
+        strong= author_count
+        span.text-muted Authors
+      .count-item
+        strong= genre_count
+        span.text-muted Genres
 
-  ul
-    li #[strong Books:] !{book_count}
-    li #[strong Copies:] !{book_instance_count}
-    li #[strong Copies available:] !{book_instance_available_count}
-    li #[strong Authors:] !{author_count}
-    li #[strong Genres:] !{genre_count}
+    hr
+
+    .grid
+      .card
+        h3 Explore
+        ul
+          li #[a(href='/catalog/books') View all books]
+          li #[a(href='/catalog/authors') View all authors]
+          li #[a(href='/catalog/genres') View all genres]
+          li #[a(href='/catalog/bookinstances') View all book instances]
+
+      .card
+        h3 Management
+        ul
+          li #[a.btn.btn-primary(href='/catalog/book/create') Create book]
+          li #[a.btn.btn-primary(href='/catalog/author/create') Create author]
+          li #[a.btn.btn-primary(href='/catalog/genre/create') Create genre]
+          li #[a.btn.btn-primary(href='/catalog/bookinstance/create') Create book copy]

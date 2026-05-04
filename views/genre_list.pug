@@ -1,13 +1,28 @@
 extends layout
 
 block content
-  h1= title
-  
-  if list_genres.length
-    ul
-      each val in list_genres
-        li
-          a(href=val.url) #{val.name}
+  .card
+    h1= title
+    
+    if list_genres.length
+      ul
+        each val in list_genres
+          li
+            a(href=val.url) #{val.name}
 
-  else
-    p There are no genres.
+    else
+      p There are no genres.
+
+    hr
+
+    div
+      a.btn.btn-primary(href='/catalog/genre/create' role='button') Create genre
+
+    hr
+
+    h2 Catalog Navigation
+    ul.list-unstyled
+      li #[a(href='/catalog') Home]
+      li #[a(href='/catalog/books') View all books]
+      li #[a(href='/catalog/authors') View all authors]
+      li #[a(href='/catalog/bookinstances') View all book copies]

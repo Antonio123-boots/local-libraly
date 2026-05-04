@@ -1,14 +1,29 @@
 extends layout
 
 block content
-  h1= title
-  
-  if book_list.length
-    ul
-      each book in book_list
-        li
-          a(href=book.url) #{book.title}
-          |  (#{book.author.name})
+  .card
+    h1= title
 
-  else
-    p There are no books.
+    if book_list.length
+      ul
+        each book in book_list
+          li
+            a(href=book.url) #{book.title}
+            |  (#{book.author.name})
+
+    else
+      p There are no books.
+
+    hr
+
+    div
+      a.btn.btn-primary(href='/catalog/book/create' role='button') Create book
+
+    hr
+
+    h2 Catalog Navigation
+    ul.list-unstyled
+      li #[a(href='/catalog') Home]
+      li #[a(href='/catalog/authors') View all authors]
+      li #[a(href='/catalog/genres') View all genres]
+      li #[a(href='/catalog/bookinstances') View all book copies]

@@ -1,21 +1,36 @@
 extends layout
 
 block content
-  h1= title
+  .card
+    h1= title
 
-  if bookinstance_list.length
-    ul
-      each val in bookinstance_list
-        li
-          a(href=val.url) #{val.book.title} : #{val.imprint} -&nbsp;
-          if val.status=='Available'
-            span.text-success #{val.status}
-          else if val.status=='Maintenance'
-            span.text-danger #{val.status}
-          else
-            span.text-warning #{val.status}
-          if val.status!='Available'
-            span  (Due: #{val.due_back_formatted})
+    if bookinstance_list.length
+      ul
+        each val in bookinstance_list
+          li
+            a(href=val.url) #{val.book.title} : #{val.imprint} -&nbsp;
+            if val.status=='Available'
+              span.text-success #{val.status}
+            else if val.status=='Maintenance'
+              span.text-danger #{val.status}
+            else
+              span.text-warning #{val.status}
+            if val.status!='Available'
+              span  (Due: #{val.due_back_formatted})
 
-  else
-    p There are no book copies in this library.
+    else
+      p There are no book copies in this library.
+
+    hr
+
+    div
+      a.btn.btn-primary(href='/catalog/bookinstance/create' role='button') Create book copy
+
+    hr
+
+    h2 Catalog Navigation
+    ul.list-unstyled
+      li #[a(href='/catalog') Home]
+      li #[a(href='/catalog/books') View all books]
+      li #[a(href='/catalog/authors') View all authors]
+      li #[a(href='/catalog/genres') View all genres]

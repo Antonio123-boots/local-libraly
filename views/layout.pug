@@ -8,31 +8,46 @@ html(lang='en')
     script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js", integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q", crossorigin="anonymous")
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    div(class='container-fluid')
-      div(class='row')
-        div(class='col-sm-2')
-          block sidebar
-            ul(class='sidebar-nav')
-              li
-                a(href='/catalog') Home
-              li
-                a(href='/catalog/books') All books
-              li
-                a(href='/catalog/authors') All authors
-              li
-                a(href='/catalog/genres') All genres
-              li
-                a(href='/catalog/bookinstances') All book-instances
-              li
-                hr
-              li
-                a(href='/catalog/author/create') Create new author
-              li
-                a(href='/catalog/genre/create') Create new genre
-              li
-                a(href='/catalog/book/create') Create new book
-              li
-                a(href='/catalog/bookinstance/create') Create new book instance (copy)
+    header.app-header.container
+      .brand
+        a(href='/catalog')
+          img(src='/images/Library%20Website%20-%20Mongoose_Express.png' alt='logo')
+        h1 Local Library
+      nav.nav-links
+        a(href='/catalog/books') All books
+        a(href='/catalog/authors') All authors
+        a(href='/catalog/genres') All genres
+        a(href='/catalog/bookinstances') All copies
 
-        div(class='col-sm-10')
+    main.container
+      .layout-grid(style='display:flex;gap:20px')
+        aside(style='width:220px')
+          .card
+            block sidebar
+              ul.list-unstyled
+                li
+                  a(href='/catalog') Home
+                li
+                  a(href='/catalog/books') All books
+                li
+                  a(href='/catalog/authors') All authors
+                li
+                  a(href='/catalog/genres') All genres
+                li
+                  a(href='/catalog/bookinstances') All book-instances
+                li
+                  hr
+                li
+                  a(href='/catalog/author/create') Create new author
+                li
+                  a(href='/catalog/genre/create') Create new genre
+                li
+                  a(href='/catalog/book/create') Create new book
+                li
+                  a(href='/catalog/bookinstance/create') Create new book instance (copy)
+
+        section(style='flex:1')
           block content
+
+    footer.container
+      p © Local Library — built with Express
